@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TrackActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="0dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp"
+        tools:ignore="MissingConstraints">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/cal"
+                android:layout_width="66dp"
+                android:layout_height="53dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.182"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/cal" />
+
+            <EditText
+                android:id="@+id/t"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="35dp"
+                android:text="November 9, 2019"
+                android:textAlignment="center"
+                android:textColorHint="#E91E63"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/cal"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/option"
+                android:layout_width="160dp"
+                android:layout_height="48dp"
+                android:layout_margin="20dp"
+                android:foreground="#7C787346"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cal"
+                app:layout_constraintHorizontal_bias="0.149"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="130dp" />
+
+            <Spinner
+                android:id="@+id/option1"
+                android:layout_width="160dp"
+                android:layout_height="48dp"
+                android:layout_margin="20dp"
+                android:foreground="#7C787346"
+                app:layout_constraintTop_toBottomOf="@+id/cal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/option"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="130dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".SecurityActivity"
+            android:id="@+id/scrollView3">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/map"
+                android:scrollbars="vertical"
+                android:id="@+id/recyclerView"
+                tools:context=".TrackActivity">
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </ScrollView>
+
+        <EditText
+            android:id="@+id/etChooseTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:hint="Choose the time" />
+
+
+        <EditText
+            android:id="@+id/etChooseTime1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:hint="Choose the time" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
