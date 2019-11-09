@@ -75,7 +75,7 @@ public class LandingActivity extends AppCompatActivity {
 //                    return;
 //                }
 //                startActivity(intent);
-                String eNo = "7975525797";
+                String eNo = "7250996657";
                 Intent intent = new Intent(Intent.ACTION_CALL);
                 intent.setData(Uri.parse("tel:" + eNo));
                 if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
@@ -112,8 +112,8 @@ public class LandingActivity extends AppCompatActivity {
 //                String phno = "tel:";
                 Snackbar.make(view, "Texting your favourite contacts", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                String smsNumber = "9980950484";
-                String smsText = "its an emergency.pls help!!My current location\n"+message;
+                String smsNumber = "7250996657";
+                String smsText = "It is an emergency.pls help!!My current location\n"+message;
 
                 Uri uri = Uri.parse("smsto:" + smsNumber);
                 Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
@@ -165,7 +165,7 @@ public class LandingActivity extends AppCompatActivity {
                 WifiManager wifiMgr = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
                 WifiInfo wifiInfo = wifiMgr.getConnectionInfo();
                 if (wifiInfo.getBSSID()!=null) {
-                    if (wifiInfo.getBSSID().equals("WIFI BSSID")) {
+                    if (wifiInfo.getBSSID().equals("7c:95:f3:73:1f:89")) {
                         Intent intent = new Intent(getApplicationContext(), Chat.class);
                         startActivity(intent);
                     }
@@ -177,8 +177,8 @@ public class LandingActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Connect to our WiFi and then try", Toast.LENGTH_LONG).show();
                 }
 
-                Intent intent = new Intent(getApplicationContext(), Chat.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getApplicationContext(), Chat.class);
+//                startActivity(intent);
             }
         });
 
