@@ -29,7 +29,7 @@ public class MyService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        player = MediaPlayer.create(getApplicationContext(), Settings.System.DEFAULT_RINGTONE_URI);
+        player = MediaPlayer.create(getApplicationContext(), R.raw.guide);
         player.start();
         requestLocationUpdates();
         return START_STICKY;
