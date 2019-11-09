@@ -38,7 +38,7 @@ public class ListAdapter1 extends RecyclerView.Adapter<ListAdapter1.ViewHolder>{
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), "click on item: " + myListData.getName(), Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(mContext, ProfileActivity.class);
+                Intent intent = new Intent(mContext, BusActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
             }

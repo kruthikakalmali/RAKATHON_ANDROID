@@ -23,11 +23,15 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TrackActivity2"></activity>
+        <activity
+            android:name=".BusActivity"
+            android:label="@string/title_activity_bus"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".TrackActivity2" />
         <activity android:name=".Chat" />
-        <activity android:name=".RouteActivity"></activity>
-        <activity android:name=".TrackActivity"></activity>
-        <activity android:name=".SeatsActivity"></activity>
+        <activity android:name=".RouteActivity" />
+        <activity android:name=".TrackActivity" />
+        <activity android:name=".SeatsActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -45,7 +49,7 @@
             android:label="@string/title_activity_live_track" />
         <activity
             android:name=".MapsActivity"
-            android:label="Maps Activity"></activity>
+            android:label="Maps Activity" />
         <activity android:name=".RechargeActivity" />
         <activity
             android:name=".SecurityActivity"
@@ -54,8 +58,7 @@
         <activity
             android:name=".LandingActivity"
             android:label="@string/title_activity_landing"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".ChatActivity">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
