@@ -13,15 +13,15 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="50dp"
-        tools:context=".TrackActivity">
+        tools:context=".TrackActivity2">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/recyclerView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="vertical"
             app:layout_constraintTop_toBottomOf="@+id/map"
-            tools:context=".TrackActivity"></androidx.recyclerview.widget.RecyclerView>
+            tools:context=".TrackActivity2"></androidx.recyclerview.widget.RecyclerView>
 
     </ScrollView>
 

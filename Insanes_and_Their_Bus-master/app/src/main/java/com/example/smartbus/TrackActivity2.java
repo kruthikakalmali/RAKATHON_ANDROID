@@ -19,8 +19,8 @@ public class TrackActivity2 extends AppCompatActivity {
                 new Bus("500D"),
         };
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        ListAdapter adapter = new ListAdapter(getApplicationContext(), myListData);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView1);
+        ListAdapter1 adapter = new ListAdapter1(getApplicationContext(), myListData);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
