@@ -22,18 +22,14 @@ public class ProfileActivity extends AppCompatActivity {
     public static final String GOOGLE_ACCOUNT = "google_account";
     private TextView profileName, profileEmail;
     private ImageView profileImage;
-    private Button signOutbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        profileName = findViewById(R.id.profile_text);
-        profileEmail = findViewById(R.id.profile_email);
-        profileImage = findViewById(R.id.profile_image);
-        signOutbtn = findViewById(R.id.sign_out);
-        setDataOnView();
-        signOutbtn.setOnClickListener(new View.OnClickListener() {
+        Button submit = findViewById(R.id.submit);
+        //setDataOnView();
+        submit.setOnClickListener(new View.OnClickListener() {
                                        @Override
                                        public void onClick(View v) {
                                            Intent intent = new Intent(ProfileActivity.this,ChatActivity.class);
@@ -47,13 +43,13 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-    private void setDataOnView() {
-        GoogleSignInAccount googleSignInAccount = getIntent().getParcelableExtra(GOOGLE_ACCOUNT);
-        //Picasso.get().load(googleSignInAccount.getPhotoUrl()).centerInside().fit().into(profileImage);
-        profileName.setText(googleSignInAccount.getDisplayName());
-        profileEmail.setText(googleSignInAccount.getEmail());
-
-    }
+//    private void setDataOnView() {
+//        GoogleSignInAccount googleSignInAccount = getIntent().getParcelableExtra(GOOGLE_ACCOUNT);
+//        //Picasso.get().load(googleSignInAccount.getPhotoUrl()).centerInside().fit().into(profileImage);
+//        profileName.setText(googleSignInAccount.getDisplayName());
+//        profileEmail.setText(googleSignInAccount.getEmail());
+//
+//    }
 
 //    private void signOut() {
 //        GoogleSignInAccount.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {

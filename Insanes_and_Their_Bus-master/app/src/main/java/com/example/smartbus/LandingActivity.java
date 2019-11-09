@@ -166,7 +166,7 @@ public class LandingActivity extends AppCompatActivity {
                 WifiInfo wifiInfo = wifiMgr.getConnectionInfo();
                 if (wifiInfo.getBSSID()!=null) {
                     if (wifiInfo.getBSSID().equals("7c:95:f3:73:1f:89")) {
-                        Intent intent = new Intent(getApplicationContext(), Chat.class);
+                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                         startActivity(intent);
                     }
                     else {
