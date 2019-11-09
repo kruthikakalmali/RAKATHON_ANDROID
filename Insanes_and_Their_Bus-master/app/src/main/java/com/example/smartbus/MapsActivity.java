@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -29,6 +30,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Marker m;
     int p = 0;
     int p1= 0;
+    int i = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        Switch s = findViewById(R.id.switch1);
+        s.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (i==1) {
+                    i=0;
+                }
+                else {
+                    i=1;
+                }
+            }
+        });
 
         Spinner spinner = findViewById(R.id.option);
         ArrayList<String> arrayList = new ArrayList<>();
@@ -59,8 +74,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 Toast.makeText(parent.getContext(), "Selected: " + tutorialsName, Toast.LENGTH_LONG).show();
                 p = position;
                 if (p1!=0 && p!=0) {
-                    Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
-                    startActivity(intent);
+                    if (i==1) {
+                        Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
+                        startActivity(intent);
+                    }
+                    else {
+                        Intent intent = new Intent(getApplicationContext(), TrackActivity2.class);
+                        startActivity(intent);
+                    }
                 }
             }
             @Override
@@ -87,8 +108,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 Toast.makeText(parent.getContext(), "Selected: " + tutorialsName, Toast.LENGTH_LONG).show();
                 p1=position;
                 if (p1!=0 && p!=0) {
-                    Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
-                    startActivity(intent);
+                    if (i==1) {
+                        Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
+                        startActivity(intent);
+                    }
+                    else {
+                        Intent intent = new Intent(getApplicationContext(), TrackActivity2.class);
+                        startActivity(intent);
+                    }
                 }
             }
             @Override
