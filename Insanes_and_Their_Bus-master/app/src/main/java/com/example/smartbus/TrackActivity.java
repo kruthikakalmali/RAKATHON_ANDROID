@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -19,10 +21,10 @@ import java.util.Calendar;
 
 public class TrackActivity extends AppCompatActivity {
 
-    int p=0; //value from previous activity
-    int p1=0; //value from previous activity
-    EditText chooseTime;
-    EditText chooseTime1;
+    ImageView chooseTime;
+    TextView mt;
+    TextView mt1;
+    ImageView chooseTime1;
     TimePickerDialog timePickerDialog;
     Calendar calendar;
     int currentHour;
@@ -46,58 +48,8 @@ public class TrackActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        Spinner spinner = findViewById(R.id.option);
-        ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("Select Source!");
-        arrayList.add("Hebbal");
-        arrayList.add("BEL Circle");
-        arrayList.add("Gokula");
-        arrayList.add("Matthikere");
-        arrayList.add("Ramaiah College");
-        arrayList.add("Yesvantpur");
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(arrayAdapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String tutorialsName = parent.getItemAtPosition(position).toString();
-                Toast.makeText(parent.getContext(), "Selected: " + tutorialsName, Toast.LENGTH_LONG).show();
-                if (position!=p) {
-                    //Fetch new from database
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView <?> parent) {
-            }
-        });
-
-        Spinner spinner1 = findViewById(R.id.option1);
-        ArrayList<String> arrayList1 = new ArrayList<>();
-        arrayList1.add("Select Destination!");
-        arrayList1.add("Hebbal");
-        arrayList1.add("BEL Circle");
-        arrayList1.add("Gokula");
-        arrayList1.add("Matthikere");
-        arrayList1.add("Ramaiah College");
-        arrayList1.add("Yesvantpur");
-        ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList1);
-        arrayAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner1.setAdapter(arrayAdapter1);
-        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String tutorialsName = parent.getItemAtPosition(position).toString();
-                Toast.makeText(parent.getContext(), "Selected: " + tutorialsName, Toast.LENGTH_LONG).show();
-                if (position!=p1) {
-                    //Fetch new from database
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView <?> parent) {
-            }
-        });
-        chooseTime = findViewById(R.id.etChooseTime);
+        chooseTime = findViewById(R.id.time1);
+        mt = findViewById(R.id.t1);
         chooseTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,7 +65,7 @@ public class TrackActivity extends AppCompatActivity {
                         } else {
                             amPm = "AM";
                         }
-                        chooseTime.setText(String.format("%02d:%02d", hourOfDay, minutes) + amPm);
+                        mt.setText(String.format("%02d:%02d", hourOfDay, minutes) + amPm);
 
                     }
                 }, currentHour, currentMinute, false);
@@ -121,8 +73,8 @@ public class TrackActivity extends AppCompatActivity {
                 timePickerDialog.show();
             }
         });
-
-        chooseTime1 = findViewById(R.id.etChooseTime1);
+        mt1 = findViewById(R.id.t2);
+        chooseTime1 = findViewById(R.id.time2);
         chooseTime1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -138,7 +90,7 @@ public class TrackActivity extends AppCompatActivity {
                         } else {
                             amPm = "AM";
                         }
-                        chooseTime1.setText(String.format("%02d:%02d", hourOfDay, minutes) + amPm);
+                        mt1.setText(String.format("%02d:%02d", hourOfDay, minutes) + amPm);
 
                     }
                 }, currentHour, currentMinute, false);

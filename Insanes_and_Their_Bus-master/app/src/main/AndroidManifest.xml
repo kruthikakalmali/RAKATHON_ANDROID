@@ -14,7 +14,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -23,16 +23,11 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Chat"></activity>
-        <activity android:name=".RouteActivity">
-
-        </activity>
-        <activity android:name=".TrackActivity">
-
-        </activity>
-        <activity android:name=".SeatsActivity" >
-
-        </activity>
+        <activity android:name=".TrackActivity2"></activity>
+        <activity android:name=".Chat" />
+        <activity android:name=".RouteActivity"></activity>
+        <activity android:name=".TrackActivity"></activity>
+        <activity android:name=".SeatsActivity"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -50,9 +45,7 @@
             android:label="@string/title_activity_live_track" />
         <activity
             android:name=".MapsActivity"
-            android:label="Maps Activity" >
-
-        </activity>
+            android:label="Maps Activity"></activity>
         <activity android:name=".RechargeActivity" />
         <activity
             android:name=".SecurityActivity"
@@ -61,23 +54,20 @@
         <activity
             android:name=".LandingActivity"
             android:label="@string/title_activity_landing"
-            android:theme="@style/AppTheme.NoActionBar" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ChatActivity">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".Splashscreen">
-
-        </activity>
+        <activity android:name=".Splashscreen"></activity>
         <activity android:name=".MainActivity" />
 
         <service android:name=".MyService" />
