@@ -74,7 +74,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 Toast.makeText(parent.getContext(), "Selected: " + tutorialsName, Toast.LENGTH_LONG).show();
                 p = position;
                 if (p1!=0 && p!=0) {
-                    if (i==1) {
+                    if (i==0) {
                         Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
                         startActivity(intent);
                     }
@@ -108,7 +108,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 Toast.makeText(parent.getContext(), "Selected: " + tutorialsName, Toast.LENGTH_LONG).show();
                 p1=position;
                 if (p1!=0 && p!=0) {
-                    if (i==1) {
+                    if (i==0) {
                         Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
                         startActivity(intent);
                     }
