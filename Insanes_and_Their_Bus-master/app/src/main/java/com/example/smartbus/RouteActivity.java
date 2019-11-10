@@ -1,74 +1,93 @@
 package com.example.smartbus;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartbus.directionhelpers.TaskLoadedCallback;
 import com.example.smartbus.directionhelpers.fetchurl;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-public class RouteActivity extends AppCompatActivity implements OnMapReadyCallback, TaskLoadedCallback {
+public class RouteActivity extends AppCompatActivity implements OnMapReadyCallback{
+
     private GoogleMap mMap;
-    private MarkerOptions place1, place2;
-    Button btnGetDirection;
-    private Polyline currentPolyline;
-    
+    private Marker m1;
+    private Marker m2;
+    private Marker m;
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.routeactivity);
-        btnGetDirection = findViewById(R.id.btnGetDirection);
-        place1 = new MarkerOptions().position(new LatLng(27.658143, 85.3199503)).title("Location 1");
-        place2 = new MarkerOptions().position(new LatLng(27.667491, 85.3208583)).title("Location 2");
-        MapFragment mapFragment = (MapFragment) getFragmentManager()
-                .findFragmentById(R.id.mapNearBy);
+
+
+        Routes[] myListData = new Routes[] {
+                new Routes("Hebbal", "5/50"),
+                new Routes("BEL Circle", "0/50"),
+                new Routes("Gokula", "10/50"),
+                new Routes("Matthikere", "15/50"),
+                new Routes("Ramaiah College", "12/50"),
+                new Routes("Yesvantpur", "0/50")
+        };
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewRoutes1);
+        RoutesAdapter adapter = new RoutesAdapter(myListData);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-String url=getUrl(place1.getPosition(),place2.getPosition(),"driving");
-new fetchurl(RouteActivity.this).execute(url,"driving");
-
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        Log.d("mylog", "Added Markers");
-        mMap.addMarker(place1);
-        mMap.addMarker(place2);
-    }
 
+        // Add a marker in Sydney and move the camera
+        LatLng MatthikereStop = new LatLng(13.1, 77.33);
+        m = mMap.addMarker(new MarkerOptions().position(MatthikereStop).title("Matthikere Bus Stop"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(MatthikereStop));
+        mMap.setMaxZoomPreference(13f);
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(13));
 
-    private String getUrl(LatLng origin, LatLng dest, String directionMode) {
-        // Origin of route
-        String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
-        // Destination of route
-        String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
-        // Mode
-        String mode = "mode=" + directionMode;
-        // Building the parameters to the web service
-        String parameters = str_origin + "&" + str_dest + "&" + mode;
-        // Output format
-        String output = "json";
-        // Building the url to the web service
-        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters + "&key=" + getString(R.string.google_maps_key);
-        return url;
-    }
+        LatLng Bus500 = new LatLng(13.15, 77.33);
+        mMap.addMarker(new MarkerOptions().position(Bus500).icon(
+                BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)
+        ).title("500, ETA: 8:20am"));
 
+        LatLng Bus500BA = new LatLng(13.12, 77.3121);
+        mMap.addMarker(new MarkerOptions().position(Bus500BA).icon(
+                BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)
+        ).title("500BA, ETA: 8:05am"));
 
-    @Override
-    public void onTaskDone(Object... values) {
-        if (currentPolyline != null)
-            currentPolyline.remove();
-        currentPolyline = mMap.addPolyline((PolylineOptions) values[0]);
+        LatLng Bus500D = new LatLng(13.1345, 77.3122);
+        mMap.addMarker(new MarkerOptions().position(Bus500D).icon(
+                BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)
+        ).title("500D, ETA: 8:15am"));
+
+        PolylineOptions p = new PolylineOptions();
+        PolylineOptions p1 = new PolylineOptions();
+
+        mMap.addPolyline(p.add(Bus500D).add(Bus500BA).add(MatthikereStop).color(Color.GREEN).geodesic(true));
+        mMap.addPolyline(p1.add(Bus500).add(MatthikereStop).color(Color.GREEN).geodesic(true));
+
     }
 }
